@@ -1,5 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
+const API_BASE = import.meta.env.VITE_API_URL;
+
 
 export default function CsvUpload() {
   const [file, setFile] = useState(null);
@@ -12,7 +14,8 @@ export default function CsvUpload() {
     formData.append("file", file);
 
     const res = await axios.post(
-      "http://localhost:5000/reports/upload",
+      `${API_BASE}/job-status/${jobId}`
+,
       formData
     );
 

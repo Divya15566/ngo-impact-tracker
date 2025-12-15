@@ -1,5 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
+const API_BASE = import.meta.env.VITE_API_URL;
+
 
 export default function Dashboard() {
   const [month, setMonth] = useState("");
@@ -7,8 +9,7 @@ export default function Dashboard() {
 
   const fetchData = async () => {
     const res = await axios.get(
-      `http://localhost:5000/dashboard?month=${month}`
-    );
+  `${API_BASE}/dashboard?month=${month}`);
     setData(res.data);
   };
 

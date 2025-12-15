@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+const API_BASE = import.meta.env.VITE_API_URL;
 
 export default function ReportForm() {
   const [form, setForm] = useState({
@@ -15,7 +16,7 @@ export default function ReportForm() {
 
   const submitReport = async () => {
     try {
-      await axios.post("http://localhost:5000/report", form);
+      await axios.post(`${API_BASE}/report`, form);
       alert("Report submitted successfully");
     } catch {
       alert("Submission failed");

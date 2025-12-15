@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-const API_BASE = import.meta.env.VITE_API_URL;
 
+const API_BASE = import.meta.env.VITE_API_URL;
 
 export default function CsvUpload() {
   const [file, setFile] = useState(null);
@@ -14,8 +14,7 @@ export default function CsvUpload() {
     formData.append("file", file);
 
     const res = await axios.post(
-      `${API_BASE}/job-status/${jobId}`
-,
+      `${API_BASE}/reports/upload`,
       formData
     );
 
@@ -25,7 +24,7 @@ export default function CsvUpload() {
   const pollStatus = (jobId) => {
     const interval = setInterval(async () => {
       const res = await axios.get(
-        `http://localhost:5000/job-status/${jobId}`
+        `${API_BASE}/job-status/${jobId}`
       );
       setStatus(res.data);
 
@@ -39,7 +38,11 @@ export default function CsvUpload() {
 
       <div className="form-group">
         <label>Select CSV File</label>
-        <input type="file" accept=".csv" onChange={(e) => setFile(e.target.files[0])} />
+        <input
+          type="file"
+          accept=".csv"
+          onChange={(e) => setFile(e.target.files[0])}
+        />
       </div>
 
       <button onClick={uploadFile}>Upload CSV</button>

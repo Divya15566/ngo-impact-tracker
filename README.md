@@ -25,26 +25,22 @@ A web application to help NGOs submit monthly impact reports and enable admins t
 ## Setup Instructions
 
 ### Backend
-```bash
 cd backend
 npm install
 npm run dev
 
 ### Frontend
-```bash
 cd frontend
 npm install
 npm run dev
 
 ### API Endpoints
-
 - POST /report
 - POST /reports/upload
 - GET /job-status/:jobId
 - GET /dashboard?month=YYYY-MM
 
 ### Deployed Links
-
 - Frontend: (add after deployment)
 - Backend: (add after deployment)
 
